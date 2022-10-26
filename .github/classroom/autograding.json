@@ -1,3 +1,4 @@
+
 {
   "tests": [
     {
@@ -15,7 +16,7 @@
       "setup": "make",
       "run": "./store",
       "input": "2\ninputs/sample.txt\n5\n",
-      "output": "Name:+\sApples+\sQuantity:+\s108+\sPrice:+\s$0.98+\sName:+\sBananas+\sQuantity:+\s22+\sPrice:+\s$1.29+\sName:+\sFlank Steak+\sQuantity:+\s50+\sPrice:+\s$8.82+\sName:+\sChocolate Ice Cream+\sQuantity:+\s99+\sPrice:+\s$3.23+\sName:+\sGym Bag+\sQuantity:+\s14+\sPrice:+\s$23.12+\sName:+\sFrozen Pizza+\sQuantity:+\s12+\sPrice:+\s$9.99+\sName:+\sPickles+\sQuantity:+\s20+\sPrice:+\s$5.67+\s",
+	  "output": ".*Name:\\s+Apples\\n\\s+Quantity:\\s+108\\s+Price:\\s+\\$0\\.98\\n\\s*Name:\\s+Bananas\\n\\s+Quantity:\\s+22\\s+Price:\\s+\\$1\\.29\\n\\s*Name:\\s+Flank Steak\\n\\s+Quantity:\\s+50\\s+Price:\\s+\\$8\\.82\\n\\s*Name:\\s+Chocolate Ice Cream\\n\\s+Quantity:\\s+99\\s+Price:\\s+\\$3\\.23\\n\\s*Name:\\s+Gym Bag\\n\\s+Quantity:\\s+14\\s+Price:\\s+\\$23\\.12\\n\\s*Name:\\s+Frozen Pizza\\n\\s+Quantity:\\s+12\\s+Price:\\s+\\$9\\.99\\n\\s*Name:\\s+Pickles\\s+Quantity:\\s+20\\s+Price:\\s+\\$5\\.67.*",
       "comparison": "regex",
       "timeout": 1,
       "points": 1
@@ -25,7 +26,7 @@
       "setup": "make",
       "run": "./store",
       "input": "1\ninputs/sample.txt\nChocolate Ice Cream\n5\n",
-      "output": "Name:+\sChocolate Ice Cream+\sQuantity:+\s99+\sPrice:+\s$3.23",
+      "output": "Name:\\s+Chocolate Ice Cream\\s+Quantity:\\s+99\\s+Price:\\s+\\$3\\.23",
       "comparison": "regex",
       "timeout": 1,
       "points": 1
@@ -35,7 +36,7 @@
       "setup": "make",
       "run": "./store",
       "input": "3\ninputs/sample.txt\nPickles\n5\n5\n",
-      "output": "Order successfully placed:+\sName:+\sPickles+\sQuantity:+\s25+\sPrice+\s$5.67+\s",
+      "output": "Order successfully placed:\\n\\s*Name:\\s+Pickles\\n\\s+Quantity:\\s+25\\s+Price:\\s+\\$5\\.67",
       "comparison": "regex",
       "timeout": 1,
       "points": 1
@@ -45,20 +46,21 @@
       "setup": "make",
       "run": "./store",
       "input": "4\ninputs/sample.txt\nFrozen Pizza\n20\n5\n",
-      "output": "ERROR:+\sonly 12 Frozen Pizza in stock",
-      "comparison": "included",
+      "output": "ERROR:\\s+only 12 Frozen Pizza in stock",
+      "comparison": "regex",
       "timeout": 1,
       "points": 1
       },
       {
-      "name": "Sell Success"
+	  "name": "Sell Success",
       "setup": "make",
       "run": "./store",
       "input": "4\ninputs/sample.txt\nFrozen Pizza\n12\n5\n",
-      "output": "\|+\s12 Frozen Pizza & 9.99:+\s$119.88+\s+\|\n\|+\sTax (5.5%):+\s$6.59+\s\|\n\|+\s+\**\s\|\n\|+\sTotal:+\s$126.47+\s\|",
+      "output": "\\|\\s+12 Frozen Pizza @ 9\\.99:\\s+\\$119\\.88\\s+\\|\\n\\|\\s+Tax \\(5\\.5\\%\\):\\s+\\$6\\.59\\s+\\|\\n\\|\\s+\\**\\s+\\|\\n\\|\\s+Total:\\s+\\$126\\.47\\s+\\|",
       "comparison": "regex",
       "timeout": 1,
       "points": 1
-    },
+    }
   ]
 }
+
