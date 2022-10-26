@@ -1,0 +1,13 @@
+# stuff we don't want git to show us in git status
+
+# object files (created as part of make)
+*.o
+
+# emacs autosaves
+*~
+
+# our named executable from make
+store
+
+# any default executables
+a.out

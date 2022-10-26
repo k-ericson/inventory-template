@@ -1,0 +1,16 @@
+7
+123
+Apples
+108 .98
+Bananas
+22 1.29
+Flank Steak
+50 8.82
+Chocolate Ice Cream
+99 3.23
+Gym Bag
+14 23.12
+Frozen Pizza
+12 9.99
+Pickles
+20 5.67

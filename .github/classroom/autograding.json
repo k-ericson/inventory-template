@@ -1,0 +1,64 @@
+{
+  "tests": [
+    {
+      "name": "Menu",
+      "setup": "make",
+      "run": "./store",
+      "input": "2\ninputs/sample.txt\n5\n",
+      "output": "1. Check a single item.\n2. Print entire inventory.\n3. Restock an item.\n4. Sell an item.",
+      "comparison": "included",
+      "timeout": 1,
+      "points": 1
+    },
+      {
+      "name": "Entire Inventory",
+      "setup": "make",
+      "run": "./store",
+      "input": "2\ninputs/sample.txt\n5\n",
+      "output": "Name:+\sApples+\sQuantity:+\s108+\sPrice:+\s$0.98+\sName:+\sBananas+\sQuantity:+\s22+\sPrice:+\s$1.29+\sName:+\sFlank Steak+\sQuantity:+\s50+\sPrice:+\s$8.82+\sName:+\sChocolate Ice Cream+\sQuantity:+\s99+\sPrice:+\s$3.23+\sName:+\sGym Bag+\sQuantity:+\s14+\sPrice:+\s$23.12+\sName:+\sFrozen Pizza+\sQuantity:+\s12+\sPrice:+\s$9.99+\sName:+\sPickles+\sQuantity:+\s20+\sPrice:+\s$5.67+\s",
+      "comparison": "regex",
+      "timeout": 1,
+      "points": 1
+      },
+      {
+      "name": "Single Item",
+      "setup": "make",
+      "run": "./store",
+      "input": "1\ninputs/sample.txt\nChocolate Ice Cream\n5\n",
+      "output": "Name:+\sChocolate Ice Cream+\sQuantity:+\s99+\sPrice:+\s$3.23",
+      "comparison": "regex",
+      "timeout": 1,
+      "points": 1
+    },
+      {
+      "name": "Restock",
+      "setup": "make",
+      "run": "./store",
+      "input": "3\ninputs/sample.txt\nPickles\n5\n5\n",
+      "output": "Order successfully placed:+\sName:+\sPickles+\sQuantity:+\s25+\sPrice+\s$5.67+\s",
+      "comparison": "regex",
+      "timeout": 1,
+      "points": 1
+      },
+      {
+      "name": "Sell Fail",
+      "setup": "make",
+      "run": "./store",
+      "input": "4\ninputs/sample.txt\nFrozen Pizza\n20\n5\n",
+      "output": "ERROR:+\sonly 12 Frozen Pizza in stock",
+      "comparison": "included",
+      "timeout": 1,
+      "points": 1
+      },
+      {
+      "name": "Sell Success"
+      "setup": "make",
+      "run": "./store",
+      "input": "4\ninputs/sample.txt\nFrozen Pizza\n12\n5\n",
+      "output": "\|+\s12 Frozen Pizza & 9.99:+\s$119.88+\s+\|\n\|+\sTax (5.5%):+\s$6.59+\s\|\n\|+\s+\**\s\|\n\|+\sTotal:+\s$126.47+\s\|",
+      "comparison": "regex",
+      "timeout": 1,
+      "points": 1
+    },
+  ]
+}
